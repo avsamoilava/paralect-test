@@ -15,6 +15,10 @@
     "react-refresh/only-export-components": "warn",
     "comma-dangle": ["error", "only-multiline"],
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "jsx-quotes": [
+      1,
+      "prefer-double"
+    ]
   }
 }
