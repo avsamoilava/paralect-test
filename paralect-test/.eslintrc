@@ -14,6 +14,7 @@
   "rules": {
     "react-refresh/only-export-components": "warn",
     "comma-dangle": ["error", "only-multiline"],
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "no-unused-vars": "warn"
   }
 }
