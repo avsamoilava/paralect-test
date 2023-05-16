@@ -16,6 +16,7 @@
     "comma-dangle": ["error", "only-multiline"],
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "no-unused-vars": "warn",
+    "react/prop-types": "off",
     "jsx-quotes": [
       1,
       "prefer-double"

@@ -1,0 +1,22 @@
+.vacancy {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profession {
+}
+.firm {
+
+}
+.payment {
+
+}
+.type-work {
+
+}
+.town {
+
+}
