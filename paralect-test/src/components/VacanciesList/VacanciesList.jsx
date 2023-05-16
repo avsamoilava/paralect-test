@@ -6,7 +6,7 @@ export const VacanciesList = ({ vacancies }) => {
   return (
     <div className={cl['vacancies']}>
       {vacancies.length &&
-        vacancies.map((vacancy, index) => <Vacancy key={index} vacancy={vacancy} />)}
+        vacancies.map((vacancy) => <Vacancy key={vacancy.id} vacancy={vacancy} />)}
     </div>
   );
 };

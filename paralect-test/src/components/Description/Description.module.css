@@ -1,0 +1,11 @@
+.description {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+} 
+.description ul {
+    text-align: left;
+}
+.description p {
+  font-weight: bold;
+}
