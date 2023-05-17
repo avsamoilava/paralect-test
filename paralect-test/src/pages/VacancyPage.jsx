@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Vacancy } from '../components/Vacancy/Vacancy';
 import { VacanciesAPI } from '../api/VacanciesAPI';
-import { Description } from '../components/Description/Description';
+import { Loader } from '../components/Loader/Loader';
+import { VacancyFull } from '../components/VacancyFull/VacancyFull';
 
 export const VacancyPage = () => {
   const { pathname } = useLocation();
   const id = +pathname.slice(1);
   const [vacancy, setVacancy] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchVacancy = async () => {
+      setIsLoading(true);
       const data = await VacanciesAPI.getOneVacancy(id);
       setVacancy(data);
+      setIsLoading(false);
     };
     fetchVacancy();
   }, [id]);
@@ -20,8 +23,7 @@ export const VacancyPage = () => {
   return (
     <div className="">
       <h1>Vacancy</h1>
-      {Object.keys(vacancy).length && <Vacancy vacancy={vacancy} />}
-      {Object.keys(vacancy).length && <Description vacancy={vacancy} />}
+      {isLoading ? <Loader /> : <VacancyFull vacancy={vacancy} />}
     </div>
   );
 };

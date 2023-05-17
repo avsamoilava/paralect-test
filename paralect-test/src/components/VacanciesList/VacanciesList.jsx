@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { Vacancy } from '../Vacancy/Vacancy';
 import cl from './VacanciesList.module.css';
 

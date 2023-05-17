@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { VacanciesAPI } from '../api/VacanciesAPI';
 import { VacanciesList } from '../components/VacanciesList/VacanciesList';
+import { Loader } from '../components/Loader/Loader';
 
 export const SearchPage = () => {
   const [vacancies, setVacancies] = useState([]);
@@ -8,8 +9,10 @@ export const SearchPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const data = await VacanciesAPI.getVacancies();
       setVacancies(data.objects);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -17,7 +20,7 @@ export const SearchPage = () => {
   return (
     <div className="">
       <h1>Search Page</h1>
-      <VacanciesList vacancies={vacancies} />
+      {isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
     </div>
   );
 };
