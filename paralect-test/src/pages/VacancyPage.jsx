@@ -11,9 +11,10 @@ export const VacancyPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     const fetchVacancy = async () => {
       setIsLoading(true);
-      const data = await VacanciesAPI.getOneVacancy(id);
+      const data = await VacanciesAPI.getOneVacancy(id, token);
       setVacancy(data);
       setIsLoading(false);
     };
