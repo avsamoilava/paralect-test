@@ -23,8 +23,8 @@ export class VacanciesAPI {
     return data.json();
   }
 
-  static async getVacancies(token) {
-    const data = await fetch(`${url}/2.0/vacancies?published=1`, {
+  static async getVacancies(token, str) {
+    const data = await fetch(`${url}/2.0/vacancies?published=1&${str}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
