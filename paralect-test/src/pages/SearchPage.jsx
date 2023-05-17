@@ -5,6 +5,7 @@ import { Loader } from '../components/Loader/Loader';
 import { Filter } from '../components/Filter/Filter';
 import Context from '../Context';
 import { createQueryStr } from '../utils';
+import { SearchInput } from '../components/SearchInput/SearchInput';
 
 export const SearchPage = () => {
   const [vacancies, setVacancies] = useState([]);
@@ -27,6 +28,7 @@ export const SearchPage = () => {
     <div className="">
       <h1>Search Page</h1>
       <Filter />
+      <SearchInput />
       {isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
     </div>
   );
