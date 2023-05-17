@@ -6,6 +6,7 @@ import { Filter } from '../components/Filter/Filter';
 import Context from '../Context';
 import { createQueryStr } from '../utils';
 import { SearchInput } from '../components/SearchInput/SearchInput';
+import { PaginationBlock } from '../components/PaginationBlock/Pagination';
 
 export const SearchPage = () => {
   const [vacancies, setVacancies] = useState([]);
@@ -30,6 +31,7 @@ export const SearchPage = () => {
       <Filter />
       <SearchInput />
       {isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
+      <PaginationBlock />
     </div>
   );
 };
