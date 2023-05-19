@@ -1,0 +1,17 @@
+@import './variables';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  font-family: Inter, sans-serif;
+  color: $black;
+}
+a {
+  color: $black;
+  text-decoration: none;
+  &.active {
+  color: $blue500;
+}
+}
