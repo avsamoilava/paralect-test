@@ -4,7 +4,6 @@ import { useForm } from '@mantine/form';
 import { Box, Select, Button, NumberInput, Group } from '@mantine/core';
 import { VacanciesAPI } from '../../api/VacanciesAPI';
 import Context from '../../Context';
-import { createQueryStr } from '../../utils';
 
 export const Filter = () => {
   const form = useForm({
@@ -30,8 +29,6 @@ export const Filter = () => {
       );
     };
     fetchIndustries();
-    console.log(queryParams);
-    console.log(createQueryStr(queryParams));
   }, [queryParams]);
 
   const handleSubmit = (values) => {
