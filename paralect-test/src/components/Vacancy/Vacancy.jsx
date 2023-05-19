@@ -13,7 +13,7 @@ export const Vacancy = ({ vacancy }) => {
 
   useEffect(() => {
     favorites?.find((elem) => elem.id === id) && setIsFavorite(true);
-  }, [id]);
+  }, [favorites, id]);
 
   const clickHandler = () => {
     setIsFavorite(!isFavorite);
