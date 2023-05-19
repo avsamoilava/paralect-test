@@ -6,6 +6,13 @@
   flex-direction: column;
   gap: 10px;
 }
+.star-btn {
+  height: 24px;
+  width: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .profession {
 }
 .firm {
