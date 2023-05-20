@@ -1,10 +1,10 @@
+@import '../../variables';
 .vacancy {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid $grey200;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  text-align: left;
+  background: $white;
 }
 .star-btn {
   height: 24px;
@@ -12,18 +12,4 @@
   border: none;
   background: none;
   cursor: pointer;
-}
-.profession {
-}
-.firm {
-
-}
-.payment {
-
-}
-.type-work {
-
-}
-.town {
-
 }

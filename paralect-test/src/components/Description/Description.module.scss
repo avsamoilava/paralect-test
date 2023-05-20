@@ -1,10 +1,12 @@
+@import '../../variables';
 .description {
-  border: 1px solid black;
+  border: 1px solid $grey200;
   border-radius: 10px;
-  padding: 10px;
+  background: $white;
 } 
 .description ul {
     text-align: left;
+    margin-left: 24px;
 }
 .description p {
   font-weight: bold;

@@ -1,8 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
-import cl from './Vacancy.module.css';
+import cl from './Vacancy.module.scss';
 import { Link } from 'react-router-dom';
 import { Star, StarFilled } from '../icons';
 import Context from '../../Context';
+import { Flex, Text, Title } from '@mantine/core';
+import { IconMapPin } from '@tabler/icons-react';
+import { setPaymentInfo } from '../../utils';
 
 export const Vacancy = ({ vacancy }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -39,17 +42,28 @@ export const Vacancy = ({ vacancy }) => {
   };
 
   return (
-    <div className={cl['vacancy']}>
+    <Flex className={cl['vacancy']} justify={'space-between'} p={24} gap={40}>
+      <Link to={`/${id}`}>
+        <Flex direction={'column'} gap={12}>
+          <Title order={3} color={'#5E96FC'} fz={20} lh={'24px'}>
+            {profession}
+          </Title>
+          <Flex gap={12} align={'center'} color={''}>
+            <Text fw={600}>{setPaymentInfo(payment_from, payment_to, currency)}</Text>
+            <Text fw={600} color={'#ACADB9'}>
+              •
+            </Text>
+            <Text>{type_of_work.title}</Text>
+          </Flex>
+          <Flex gap={8} align={'center'}>
+            <IconMapPin size={20} color="#ACADB9" />
+            <Text>{town?.title}</Text>
+          </Flex>
+        </Flex>
+      </Link>
       <button onClick={clickHandler} className={cl['star-btn']}>
         {isFavorite ? <StarFilled /> : <Star />}
       </button>
-      <Link to={`/${id}`}>
-        <h3 className={cl['profession']}>{profession}</h3>
-        <div className={cl['firm']}>{firm_name}</div>
-        <div className={cl['payment']}>{payment_from}</div>
-        <div className={cl['type-work']}>{type_of_work.title}</div>
-        <div className={cl['town']}>{town?.title}</div>
-      </Link>
-    </div>
+    </Flex>
   );
 };

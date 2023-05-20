@@ -21,6 +21,7 @@ export const PaginationBlock = ({ total }) => {
       boundaries={0}
       siblings={1}
       position="center"
+      mt={40}
     />
   );
 };

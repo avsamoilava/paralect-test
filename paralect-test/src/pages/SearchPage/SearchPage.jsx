@@ -8,7 +8,7 @@ import { createQueryStr } from '../../utils';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { PaginationBlock } from '../../components/PaginationBlock/Pagination';
 import cl from './SaerchPage.module.scss';
-import { Flex } from '@mantine/core';
+import { Flex, Box } from '@mantine/core';
 
 export const SearchPage = () => {
   const [vacancies, setVacancies] = useState([]);
@@ -24,22 +24,21 @@ export const SearchPage = () => {
       const data = await VacanciesAPI.getVacancies(token, createQueryStr(queryParams));
       setVacancies(data.objects);
       setTotal(data.total);
-      console.log(data);
       setIsLoading(false);
     };
     fetchData();
   }, [queryParams]);
 
   return (
-    <Flex gap={28} maw={1138} p="40px 10px" className={cl['search-page']}>
+    <Flex gap={28} maw={1138} p="40px 10px" className={cl['search-page']} m={'0 auto'}>
       <Filter className={cl['filters']} />
-      <div className={cl['list']}>
+      <Box className={cl['list']}>
         <SearchInput className={cl['seacrh']} />
         <div className={cl['vacancies']}>
           {isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
           <PaginationBlock total={total} className={cl['pagination']} />
         </div>
-      </div>
+      </Box>
     </Flex>
   );
 };

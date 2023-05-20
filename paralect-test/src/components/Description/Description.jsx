@@ -1,7 +1,12 @@
 import parse from 'html-react-parser';
-import cl from './Description.module.css';
+import cl from './Description.module.scss';
+import { Box } from '@mantine/core';
 
 export const Description = (props) => {
   const { vacancyRichText } = props.vacancy;
-  return <div className={cl['description']}>{parse(vacancyRichText)}</div>;
+  return (
+    <Box p={24} className={cl['description']}>
+      {parse(vacancyRichText)}
+    </Box>
+  );
 };

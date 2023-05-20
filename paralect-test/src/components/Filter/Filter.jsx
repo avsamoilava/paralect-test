@@ -15,19 +15,20 @@ export const Filter = () => {
     },
   });
 
-  const [industries, setIndustries] = useState([]);
+  const [industries, setIndustries] = useState({});
   const { queryParams, saveQueryParams } = useContext(Context);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     const fetchIndustries = async () => {
       const data = await VacanciesAPI.getIndustries(token);
-      setIndustries(
-        data.reduce((acc, item) => {
-          acc[item.title] = item.key;
-          return acc;
-        }, {})
-      );
+      data &&
+        setIndustries(
+          data.reduce((acc, item) => {
+            acc[item.title] = item.key;
+            return acc;
+          }, {})
+        );
     };
     fetchIndustries();
   }, [queryParams]);

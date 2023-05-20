@@ -5,7 +5,6 @@ import { Header } from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import { VacanciesAPI } from './api/VacanciesAPI';
 import Context from './Context';
-import { Center } from '@mantine/core';
 
 function App() {
   const [queryParams, setQueryParams] = useState({});
@@ -39,9 +38,7 @@ function App() {
     <Context.Provider value={contextStore}>
       <BrowserRouter>
         <Header />
-        <Center>
-          <AppRouter />
-        </Center>
+        <AppRouter />
       </BrowserRouter>
     </Context.Provider>
   );

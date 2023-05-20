@@ -4,7 +4,7 @@ import cl from './VacanciesList.module.css';
 export const VacanciesList = ({ vacancies }) => {
   return (
     <div className={cl['vacancies']}>
-      {vacancies.length &&
+      {vacancies?.length &&
         vacancies.map((vacancy) => <Vacancy key={vacancy.id} vacancy={vacancy} />)}
     </div>
   );

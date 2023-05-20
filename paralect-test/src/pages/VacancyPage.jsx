@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { VacanciesAPI } from '../api/VacanciesAPI';
 import { Loader } from '../components/Loader/Loader';
+import { Box } from '@mantine/core';
 import { VacancyFull } from '../components/VacancyFull/VacancyFull';
 
 export const VacancyPage = () => {
@@ -21,10 +22,5 @@ export const VacancyPage = () => {
     fetchVacancy();
   }, [id]);
 
-  return (
-    <div className="">
-      <h1>Vacancy</h1>
-      {isLoading ? <Loader /> : <VacancyFull vacancy={vacancy} />}
-    </div>
-  );
+  return <Box pt={40}>{isLoading ? <Loader /> : <VacancyFull vacancy={vacancy} />}</Box>;
 };
