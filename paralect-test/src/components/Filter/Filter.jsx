@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import cl from './Filter.module.css';
+import { useContext, useEffect, useState } from 'react';
+import cl from './Filter.module.scss';
 import { useForm } from '@mantine/form';
-import { Box, Select, Button, NumberInput, Group } from '@mantine/core';
+import { Box, Select, Button, NumberInput, Group, Flex } from '@mantine/core';
 import { VacanciesAPI } from '../../api/VacanciesAPI';
 import Context from '../../Context';
+import { IconChevronDown, IconX } from '@tabler/icons-react';
 
 export const Filter = () => {
   const form = useForm({
@@ -39,26 +40,53 @@ export const Filter = () => {
       payment_to: values.to,
     });
   };
+  const handleReset = () => {
+    saveQueryParams({});
+    form.reset();
+  };
 
   return (
-    <Box maw={300} mx="auto" className={cl['filter']}>
-      <h2>Filters</h2>
+    <Box w={315} mah={360} mx="auto" p={20} className={cl['filter']}>
       <form
         onSubmit={form.onSubmit((values) => {
           handleSubmit(values);
         })}
+        onReset={handleReset}
       >
-        <Select
-          label="Отрасль"
-          placeholder="Выберите отрасль"
-          data={Object.keys(industries).length ? Object.keys(industries) : []}
-          {...form.getInputProps('industry')}
-        />
-        <Group>
-          <NumberInput placeholder="от" {...form.getInputProps('from')} />
-          <NumberInput placeholder="до" {...form.getInputProps('to')} />
-        </Group>
-        <Button type="submit">Применить</Button>
+        <Flex direction="column" gap={20}>
+          <Flex justify={'space-between'}>
+            <div className={cl['title']}>Фильтры</div>
+            <button className={cl['reset']} type="reset">
+              <Flex gap={4} align={'center'}>
+                Сбросить все
+                <IconX size={16} color={'#ACADB9'} />
+              </Flex>
+            </button>
+          </Flex>
+          <Group w="100%" gap={8}>
+            <div className={cl['subtitle']}>Отрасль</div>
+            <Select
+              w="100%"
+              placeholder="Выберите отрасль"
+              rightSection={<IconChevronDown size="1rem" />}
+              rightSectionWidth={30}
+              styles={{ rightSection: { pointerEvents: 'none' } }}
+              data={Object.keys(industries).length ? Object.keys(industries) : []}
+              {...form.getInputProps('industry')}
+            />
+          </Group>
+          <Group w="100%" gap={8}>
+            <div className={cl['subtitle']}>Оклад</div>
+            <Flex w="100%" direction="column" gap={8}>
+              <NumberInput w="100%" placeholder="от" {...form.getInputProps('from')} />
+              <NumberInput w="100%" placeholder="до" {...form.getInputProps('to')} />
+            </Flex>
+          </Group>
+
+          <Button w="100%" type="submit">
+            Применить
+          </Button>
+        </Flex>
       </form>
     </Box>
   );
