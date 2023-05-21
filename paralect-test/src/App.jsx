@@ -5,6 +5,7 @@ import { Header } from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import { VacanciesAPI } from './api/VacanciesAPI';
 import Context from './Context';
+import { MantineProvider } from '@mantine/core';
 
 function App() {
   const [queryParams, setQueryParams] = useState({});
@@ -37,8 +38,14 @@ function App() {
   return (
     <Context.Provider value={contextStore}>
       <BrowserRouter>
-        <Header />
-        <AppRouter />
+        <MantineProvider
+          theme={{
+            fontFamily: 'Inter, sans-serif',
+          }}
+        >
+          <Header />
+          <AppRouter />
+        </MantineProvider>
       </BrowserRouter>
     </Context.Provider>
   );
