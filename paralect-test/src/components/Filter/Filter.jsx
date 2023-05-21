@@ -1,7 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
-import cl from './Filter.module.scss';
 import { useForm } from '@mantine/form';
-import { Box, Select, Button, NumberInput, Group, Flex } from '@mantine/core';
+import {
+  Box,
+  Select,
+  Button,
+  NumberInput,
+  Group,
+  Flex,
+  Text,
+  useMantineTheme,
+  UnstyledButton,
+} from '@mantine/core';
 import { VacanciesAPI } from '../../api/VacanciesAPI';
 import Context from '../../context';
 import { IconChevronDown, IconX } from '@tabler/icons-react';
@@ -14,7 +23,7 @@ export const Filter = () => {
       to: 0,
     },
   });
-
+  const theme = useMantineTheme();
   const [industries, setIndustries] = useState({});
   const { queryParams, saveQueryParams } = useContext(Context);
 
@@ -41,50 +50,69 @@ export const Filter = () => {
       payment_to: values.to,
     });
   };
+
   const handleReset = () => {
     saveQueryParams({});
     form.reset();
   };
 
   return (
-    <Box w={315} mah={360} mx="auto" p={20} className={cl['filter']}>
+    <Box
+      w={315}
+      mah={360}
+      mx={'auto'}
+      p={20}
+      bg={theme.colors.white}
+      style={{ border: `1px solid ${theme.colors.grey200}`, borderRadius: '12px', flexShrink: 0 }}
+    >
       <form
         onSubmit={form.onSubmit((values) => {
           handleSubmit(values);
         })}
         onReset={handleReset}
       >
-        <Flex direction="column" gap={20}>
+        <Flex direction={'column'} gap={20}>
           <Flex justify={'space-between'}>
-            <div className={cl['title']}>Фильтры</div>
-            <button className={cl['reset']} type="reset">
+            <Text fz={20} fw={700}>
+              Фильтры
+            </Text>
+            <UnstyledButton
+              type={'reset'}
+              bg={'none'}
+              style={{ border: 'none', cursor: 'pointer' }}
+            >
               <Flex gap={4} align={'center'}>
-                Сбросить все
-                <IconX size={16} color={'#ACADB9'} />
+                <Text color={theme.colors.grey500} fz={14}>
+                  Сбросить все
+                </Text>
+                <IconX size={16} color={theme.colors.grey500} />
               </Flex>
-            </button>
+            </UnstyledButton>
           </Flex>
-          <Group w="100%" gap={8}>
-            <div className={cl['subtitle']}>Отрасль</div>
+          <Group w={'100%'} gap={8}>
+            <Text fw={700} lh={'19px'} ta={'left'}>
+              Отрасль
+            </Text>
             <Select
-              w="100%"
-              placeholder="Выберите отрасль"
-              rightSection={<IconChevronDown size="1rem" />}
+              w={'100%'}
+              placeholder={'Выберите отрасль'}
+              rightSection={<IconChevronDown size={'1.3rem'} />}
               rightSectionWidth={30}
               styles={{ rightSection: { pointerEvents: 'none' } }}
               data={Object.keys(industries).length ? Object.keys(industries) : []}
               {...form.getInputProps('industry')}
             />
           </Group>
-          <Group w="100%" gap={8}>
-            <div className={cl['subtitle']}>Оклад</div>
-            <Flex w="100%" direction="column" gap={8}>
-              <NumberInput w="100%" placeholder="от" {...form.getInputProps('from')} />
-              <NumberInput w="100%" placeholder="до" {...form.getInputProps('to')} />
+          <Group w={'100%'} gap={8}>
+            <Text fw={700} lh={'19px'} ta={'left'}>
+              Оклад
+            </Text>
+            <Flex w={'100%'} direction={'column'} gap={8}>
+              <NumberInput w={'100%'} placeholder="от" {...form.getInputProps('from')} />
+              <NumberInput w={'100%'} placeholder="до" {...form.getInputProps('to')} />
             </Flex>
           </Group>
-
-          <Button w="100%" type="submit">
+          <Button w={'100%'} type={'submit'} bg={theme.colors.blue500} radius={8}>
             Применить
           </Button>
         </Flex>

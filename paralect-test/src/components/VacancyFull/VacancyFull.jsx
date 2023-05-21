@@ -5,10 +5,10 @@ import { Flex } from '@mantine/core';
 
 export const VacancyFull = ({ vacancy }) => {
   return (
-    <Flex className="vacancy" gap={20} direction={'column'} maw={1138} m={'0 auto'}>
+    <Flex gap={20} direction={'column'} maw={773} m={'0 auto'}>
       {Object.keys(vacancy).length && (
         <React.Fragment>
-          <Vacancy vacancy={vacancy} />
+          <Vacancy mode="nolink" vacancy={vacancy} />
           <Description vacancy={vacancy} />
         </React.Fragment>
       )}

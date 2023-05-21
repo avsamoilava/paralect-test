@@ -5,9 +5,9 @@ export const createQueryStr = (params) => {
     .join('&');
 };
 export const setPaymentInfo = (from, to, currency) => {
-  if (+from && +to) return `зп ${from} - ${to} ${currency}`;
-  if (from === to && +from && +to) return `зп ${from} ${currency}`;
-  if (!+from && +to) return `зп до ${to} ${currency}`;
-  if (+from && !+to) `зп от ${from} ${currency}`;
+  if (+from && +to) return `з/п ${from} - ${to} ${currency}`;
+  if (from === to && +from && +to) return `з/п ${from} ${currency}`;
+  if (!+from && +to) return `з/п до ${to} ${currency}`;
+  if (+from && !+to) `з/п от ${from} ${currency}`;
   return '';
 };

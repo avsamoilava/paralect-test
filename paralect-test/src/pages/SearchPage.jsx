@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { VacanciesAPI } from '../../api/VacanciesAPI';
-import { VacanciesList } from '../../components/VacanciesList/VacanciesList';
-import { Loader } from '../../components/Loader/Loader';
-import { Filter } from '../../components/Filter/Filter';
-import Context from '../../context';
-import { createQueryStr } from '../../utils';
-import { SearchInput } from '../../components/SearchInput/SearchInput';
-import { PaginationBlock } from '../../components/PaginationBlock/Pagination';
-import cl from './SaerchPage.module.scss';
+import { VacanciesAPI } from '../api/VacanciesAPI';
+import { VacanciesList } from '../components/VacanciesList/VacanciesList';
+import { Loader } from '../components/Loader/Loader';
+import { Filter } from '../components/Filter/Filter';
+import Context from '../context';
+import { createQueryStr } from '../utils';
+import { SearchInput } from '../components/SearchInput/SearchInput';
+import { PaginationBlock } from '../components/PaginationBlock/Pagination';
 import { Flex, Box } from '@mantine/core';
 
 export const SearchPage = () => {
@@ -21,7 +20,6 @@ export const SearchPage = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const fetchData = async () => {
-      console.log(1);
       setIsLoading(true);
       const data = await VacanciesAPI.getVacancies(token, createQueryStr(queryParams));
       data.objects.length ? setVacancies(data.objects) : navigate('/empty');
@@ -33,13 +31,13 @@ export const SearchPage = () => {
   }, [queryParams]);
 
   return (
-    <Flex gap={28} maw={1138} p="40px 10px" className={cl['search-page']} m={'0 auto'}>
-      <Filter className={cl['filters']} />
-      <Box className={cl['list']}>
-        <SearchInput className={cl['seacrh']} />
-        <div className={cl['vacancies']}>
+    <Flex gap={28} maw={1138} p={'40px 10px'} m={'0 auto'}>
+      <Filter />
+      <Box style={{ flexGrow: 1 }}>
+        <SearchInput />
+        <div>
           {isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
-          <PaginationBlock total={total} className={cl['pagination']} />
+          <PaginationBlock total={total} />
         </div>
       </Box>
     </Flex>
