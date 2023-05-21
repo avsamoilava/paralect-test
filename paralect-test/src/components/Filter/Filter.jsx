@@ -101,6 +101,7 @@ export const Filter = () => {
               styles={{ rightSection: { pointerEvents: 'none' } }}
               data={Object.keys(industries).length ? Object.keys(industries) : []}
               {...form.getInputProps('industry')}
+              data-elem="industry-select"
             />
           </Group>
           <Group w={'100%'} gap={8}>
@@ -108,8 +109,18 @@ export const Filter = () => {
               Оклад
             </Text>
             <Flex w={'100%'} direction={'column'} gap={8}>
-              <NumberInput w={'100%'} placeholder="от" {...form.getInputProps('from')} />
-              <NumberInput w={'100%'} placeholder="до" {...form.getInputProps('to')} />
+              <NumberInput
+                w={'100%'}
+                placeholder="от"
+                {...form.getInputProps('from')}
+                data-elem="salary-from-input"
+              />
+              <NumberInput
+                w={'100%'}
+                placeholder="до"
+                {...form.getInputProps('to')}
+                data-elem="salary-to-input"
+              />
             </Flex>
           </Group>
           <Button w={'100%'} type={'submit'} bg={theme.colors.blue500} radius={8}>

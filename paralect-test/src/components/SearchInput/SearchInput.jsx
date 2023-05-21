@@ -12,7 +12,7 @@ export const SearchInput = () => {
   });
 
   const Btn = () => (
-    <Button type={'submit'} bg={theme.colors.blue500} radius={8}>
+    <Button type={'submit'} bg={theme.colors.blue500} radius={8} data-elem="search-button">
       Поиск
     </Button>
   );
@@ -28,6 +28,7 @@ export const SearchInput = () => {
         placeholder={'Введите название вакансии'}
         {...form.getInputProps('keyword')}
         mb={16}
+        data-elem="search-input"
       />
     </form>
   );

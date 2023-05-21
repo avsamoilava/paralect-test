@@ -18,9 +18,11 @@ export const Vacancy = ({ vacancy, mode }) => {
   useEffect(() => {
     favorites?.find((elem) => elem.id === id) && setIsFavorite(true);
   }, [favorites, id]);
+
   useEffect(() => {
     setPayment(setPaymentInfo(payment_from, payment_to, currency));
   }, []);
+
   const clickHandler = () => {
     setIsFavorite(!isFavorite);
     if (!isFavorite) {
@@ -50,7 +52,6 @@ export const Vacancy = ({ vacancy, mode }) => {
 
   return (
     <Flex
-      className={cl['vacancy']}
       justify={'space-between'}
       p={24}
       gap={40}
@@ -61,6 +62,7 @@ export const Vacancy = ({ vacancy, mode }) => {
         borderRadius: '10px',
         border: `1px solid ${theme.colors.grey200}`,
       }}
+      data-elem={`vacancy-${id}`}
     >
       <Wrapper>
         <Flex direction={'column'} gap={mode === 'nolink' ? 16 : 12}>
@@ -89,7 +91,11 @@ export const Vacancy = ({ vacancy, mode }) => {
           </Flex>
         </Flex>
       </Wrapper>
-      <button onClick={clickHandler} className={cl['star-btn']}>
+      <button
+        onClick={clickHandler}
+        className={cl['star-btn']}
+        data-elem={`vacancy-${id}-shortlist-button`}
+      >
         {isFavorite ? <StarFilled /> : <Star />}
       </button>
     </Flex>
