@@ -3,7 +3,7 @@ import { IconSearch } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { useContext } from 'react';
 import cl from './SearchInput.module.scss';
-import Context from '../../Context';
+import Context from '../../context';
 
 export const SearchInput = () => {
   const { queryParams, saveQueryParams } = useContext(Context);

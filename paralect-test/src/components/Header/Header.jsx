@@ -24,7 +24,7 @@ export const Header = () => {
         <nav className={cl['menu']}>
           <ul>
             <li>
-              <NavLink to={'/'}>Поиск вакансий</NavLink>
+              <NavLink to={'/'}>Поиск Вакансий</NavLink>
             </li>
             <li>
               <NavLink to={'/favorites'}>Избранное</NavLink>

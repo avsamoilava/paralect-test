@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { Pagination } from '@mantine/core';
-import Context from '../../Context';
+import Context from '../../context';
 
 export const PaginationBlock = ({ total }) => {
   const [activePage, setPage] = useState(1);

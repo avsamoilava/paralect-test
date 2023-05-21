@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { VacanciesAPI } from '../../api/VacanciesAPI';
 import { VacanciesList } from '../../components/VacanciesList/VacanciesList';
 import { Loader } from '../../components/Loader/Loader';
 import { Filter } from '../../components/Filter/Filter';
-import Context from '../../Context';
+import Context from '../../context';
 import { createQueryStr } from '../../utils';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { PaginationBlock } from '../../components/PaginationBlock/Pagination';
@@ -14,14 +15,16 @@ export const SearchPage = () => {
   const [vacancies, setVacancies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [total, setTotal] = useState(Infinity);
-
   const { queryParams } = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     const fetchData = async () => {
+      console.log(1);
       setIsLoading(true);
       const data = await VacanciesAPI.getVacancies(token, createQueryStr(queryParams));
+      data.objects.length ? setVacancies(data.objects) : navigate('/empty');
       setVacancies(data.objects);
       setTotal(data.total);
       setIsLoading(false);

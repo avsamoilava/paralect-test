@@ -3,7 +3,7 @@ import cl from './Filter.module.scss';
 import { useForm } from '@mantine/form';
 import { Box, Select, Button, NumberInput, Group, Flex } from '@mantine/core';
 import { VacanciesAPI } from '../../api/VacanciesAPI';
-import Context from '../../Context';
+import Context from '../../context';
 import { IconChevronDown, IconX } from '@tabler/icons-react';
 
 export const Filter = () => {

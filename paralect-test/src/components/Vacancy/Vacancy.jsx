@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import cl from './Vacancy.module.scss';
 import { Link } from 'react-router-dom';
 import { Star, StarFilled } from '../icons';
-import Context from '../../Context';
+import Context from '../../context';
 import { Flex, Text, Title } from '@mantine/core';
 import { IconMapPin } from '@tabler/icons-react';
 import { setPaymentInfo } from '../../utils';
