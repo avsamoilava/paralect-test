@@ -25,10 +25,9 @@ export const Filter = () => {
   });
   const theme = useMantineTheme();
   const [industries, setIndustries] = useState({});
-  const { queryParams, saveQueryParams } = useContext(Context);
+  const { queryParams, saveQueryParams, token } = useContext(Context);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     const fetchIndustries = async () => {
       const data = await VacanciesAPI.getIndustries(token);
       data &&
@@ -39,8 +38,8 @@ export const Filter = () => {
           }, {})
         );
     };
-    fetchIndustries();
-  }, [queryParams]);
+    token && fetchIndustries();
+  }, [queryParams, token]);
 
   const handleSubmit = (values) => {
     saveQueryParams({

@@ -14,11 +14,10 @@ export const SearchPage = () => {
   const [vacancies, setVacancies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [total, setTotal] = useState(Infinity);
-  const { queryParams } = useContext(Context);
+  const { queryParams, token } = useContext(Context);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     const fetchData = async () => {
       setIsLoading(true);
       const data = await VacanciesAPI.getVacancies(token, createQueryStr(queryParams));
@@ -27,8 +26,8 @@ export const SearchPage = () => {
       setTotal(data.total);
       setIsLoading(false);
     };
-    fetchData();
-  }, [queryParams]);
+    token && fetchData();
+  }, [queryParams, token]);
 
   return (
     <Flex
@@ -42,7 +41,7 @@ export const SearchPage = () => {
       <Box style={{ flexGrow: 1 }}>
         <SearchInput />
         <div>
-          {isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
+          {!token || isLoading ? <Loader /> : <VacanciesList vacancies={vacancies} />}
           <PaginationBlock total={total} />
         </div>
       </Box>

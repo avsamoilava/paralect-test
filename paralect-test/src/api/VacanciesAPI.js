@@ -13,7 +13,7 @@ const authParams = {
 export class VacanciesAPI {
   static async getToken() {
     const queryString = createQueryStr(authParams);
-    const data = await fetch(`${url}/2.0/oauth2/password?${queryString}`, {
+    const data = await fetch(`${url}/2.0/oauth2/password/?${queryString}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -23,8 +23,23 @@ export class VacanciesAPI {
     return data.json();
   }
 
+  static async refreshToken(refreshToken) {
+    const queryString = createQueryStr(authParams);
+    const data = await fetch(
+      `${url}/2.0/oauth2/refresh_token/?${queryString}&refresh_token=${refreshToken}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-secret-key': 'GEU4nvd3rej*jeh.eqp',
+        },
+      }
+    );
+    return data.json();
+  }
+
   static async getVacancies(token, str) {
-    const data = await fetch(`${url}/2.0/vacancies?published=1&${str}`, {
+    const data = await fetch(`${url}/2.0/vacancies/?published=1&${str}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
