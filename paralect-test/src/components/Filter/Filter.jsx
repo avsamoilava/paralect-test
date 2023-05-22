@@ -64,6 +64,7 @@ export const Filter = () => {
       p={20}
       bg={theme.colors.white}
       style={{ border: `1px solid ${theme.colors.grey200}`, borderRadius: '12px', flexShrink: 0 }}
+      sx={{ '@media (max-width: 48em)': { width: '100%' } }}
     >
       <form
         onSubmit={form.onSubmit((values) => {

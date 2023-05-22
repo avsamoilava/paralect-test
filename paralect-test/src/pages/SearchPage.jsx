@@ -31,7 +31,13 @@ export const SearchPage = () => {
   }, [queryParams]);
 
   return (
-    <Flex gap={28} maw={1138} p={'40px 10px'} m={'0 auto'}>
+    <Flex
+      gap={28}
+      maw={1138}
+      p={'40px 10px'}
+      m={'0 auto'}
+      sx={{ '@media (max-width: 48em)': { flexWrap: 'wrap' } }}
+    >
       <Filter />
       <Box style={{ flexGrow: 1 }}>
         <SearchInput />

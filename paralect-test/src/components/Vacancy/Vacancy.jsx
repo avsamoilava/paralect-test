@@ -62,6 +62,7 @@ export const Vacancy = ({ vacancy, mode }) => {
         borderRadius: '10px',
         border: `1px solid ${theme.colors.grey200}`,
       }}
+      sx={{ '@media (max-width: 48em)': { padding: 10 } }}
       data-elem={`vacancy-${id}`}
     >
       <Wrapper>
@@ -71,14 +72,24 @@ export const Vacancy = ({ vacancy, mode }) => {
             color={mode === 'nolink' ? theme.colors.black : theme.colors.blue500}
             fz={mode === 'nolink' ? 28 : 20}
             lh={mode === 'nolink' ? '24px' : '34px'}
+            sx={{ '@media (max-width: 48em)': { fontSize: 16 } }}
           >
             {profession}
           </Title>
-          <Flex gap={12} align={'center'} color={''} fz={mode === 'nolink' ? 20 : 16}>
+          <Flex
+            gap={12}
+            align={'center'}
+            fz={mode === 'nolink' ? 20 : 16}
+            sx={{ '@media (max-width: 48em)': { flexDirection: 'column', alignItems: 'start' } }}
+          >
             {payment ? (
               <React.Fragment>
                 <Text fw={600}>{payment}</Text>
-                <Text fw={600} color={theme.colors.grey500}>
+                <Text
+                  fw={600}
+                  color={theme.colors.grey500}
+                  sx={{ '@media (max-width: 48em)': { display: 'none' } }}
+                >
                   •
                 </Text>
               </React.Fragment>
