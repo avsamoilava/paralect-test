@@ -1,7 +1,8 @@
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './router/AppRouter';
-import { Header } from './components/Header/Header';
+//import { HeaderBlock as Header } from './components/Header/Header';
+import { HeaderWithBurger as Header } from './components/Header/HeaderWithBurger';
 import { useEffect, useState } from 'react';
 import { VacanciesAPI } from './api/VacanciesAPI';
 import Context from './context';

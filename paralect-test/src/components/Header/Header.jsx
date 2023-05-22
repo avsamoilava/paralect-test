@@ -1,11 +1,12 @@
 import { Union } from '../icons';
 import cl from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
-import { Flex, Group } from '@mantine/core';
+import { Flex, Group, useMantineTheme, Header, Text, Menu } from '@mantine/core';
 
-export const Header = () => {
+export const HeaderBlock = () => {
+  const theme = useMantineTheme();
   return (
-    <header className={cl['header']}>
+    <Header bg={theme.colors.white}>
       <Flex
         mih={84}
         gap={280}
@@ -17,9 +18,11 @@ export const Header = () => {
         m={'0 auto'}
         p={10}
       >
-        <Group className={cl['logo']} spacing={12}>
+        <Group spacing={12}>
           <Union />
-          Jobored
+          <Text ff={'Poppins, sans-serif'} fz={24} fw={600}>
+            Jobored
+          </Text>
         </Group>
         <nav className={cl['menu']}>
           <ul>
@@ -32,6 +35,6 @@ export const Header = () => {
           </ul>
         </nav>
       </Flex>
-    </header>
+    </Header>
   );
 };
