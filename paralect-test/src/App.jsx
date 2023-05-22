@@ -1,13 +1,12 @@
-import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './router/AppRouter';
-//import { HeaderBlock as Header } from './components/Header/Header';
 import { HeaderWithBurger as Header } from './components/Header/HeaderWithBurger';
 import { useEffect, useState } from 'react';
 import { VacanciesAPI } from './api/VacanciesAPI';
 import Context from './context';
 import { MantineProvider } from '@mantine/core';
 import { theme } from './styles/theme';
+import { GlobalStyles } from './styles/GlobalStyles';
 
 function App() {
   const [queryParams, setQueryParams] = useState({});
@@ -41,6 +40,7 @@ function App() {
     <Context.Provider value={contextStore}>
       <BrowserRouter>
         <MantineProvider theme={theme}>
+          <GlobalStyles />
           <Header />
           <AppRouter />
         </MantineProvider>
